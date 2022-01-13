@@ -1,0 +1,146 @@
+{
+  "main": {
+    "name": "Enio Maiale",
+    "occupation": "Senior Director, Software Engineer",
+    "description": "Diligent Software Development Director with expertise in managing high performing teams and long-term releases using the Agile framework processes. Skilled in product development, release planning, change management and product strategy.",
+    "image": "profilepic.jpg",
+    "bio": "One thing I cannot live without is coffee, I have a golden retriever, his name is Byte, I love elephants. I do crossfit, I am passionate to computer science, I like travel, and eat weird stuff.",
+    "contactmessage": "Here is where you should write your message to readers to have them get in contact with you.",
+    "email": "enio.maiale@gmail.com",
+    "phone": "305-308-0503",
+    "address": {
+      "street": "18440 NE 20TH CT",
+      "city": "Miami",
+      "state": "FL",
+      "zip": "33179"
+    },
+    "website": "http://www.enio.io",
+    "resumedownload": "http://www.enio.io/resume/EnioMaialeResume2021.pdf",
+    "social": [
+      {
+        "name": "facebook",
+        "url": "https://www.facebook.com/enio.maiale/",
+        "className": "fa fa-facebook"
+      },
+      {
+        "name": "twitter",
+        "url": "https://twitter.com/eniomaiale/",
+        "className": "fa fa-twitter"
+      },
+      {
+        "name": "linkedin",
+        "url": "https://www.linkedin.com/in/enio-maiale-64215032/",
+        "className": "fa fa-linkedin"
+      },
+      {
+        "name": "instagram",
+        "url": "http://instagram.com/eniomaiale",
+        "className": "fa fa-instagram"
+      },
+      {
+        "name": "github",
+        "url": "https://github.com/eniomaiale1",
+        "className": "fa fa-github"
+      }
+    ]
+  },
+  "resume": {
+    "skillmessage": "I am always curious about new technologies, but here you can find some of my major skills:",
+    "education": [
+      {
+        "school": "Nueva Esparta University (Venezuela)",
+        "degree": "Bachelor of Computer Science",
+        "graduated": "Oct 2005",
+        "description": ""
+      }
+    ],
+    "work": [
+      {
+        "company": "Miami HEAT",
+        "title": "Senior Director, Software Engineer",
+        "years": "Nov 2021 - Present",
+        "description": "Built and scaled the vision of a software engineering team by developing the culture, creating/applying best industry practice and procedures, defining team members roles and responsibilities, assigning objectives and goals to implement an agile framework.\nManage the engineering team and projects, internal and external (off-shore vendor), measure and improve team engagement and productivity."
+      },
+      {
+        "company": "Miami HEAT ",
+        "title": "Director, Software Engineer",
+        "years": "Oct 2018 - Nov 2021",
+        "description": ""
+      },
+      {
+        "company": "Phunware, Inc.",
+        "title": "Senior Software Engineer",
+        "years": "Dic 2016 - Oct 2018",
+        "description": "Develop single page apps using React, RESTful API in C # with Micro services approach. IoT integrations with SALTO Locks. Perform code review and make sure that high quality code, and best practices are implemented. Design CD/CI using Jenkins. Ensure that our test cases reach or code coverage policy before deploy to live. Coordinate with QA department that proper test cases were performed in Stage before any release to production, making sure that every aspect of the application is working as expected. Coordinate deployments and release to Stage and Live."
+      },
+      {
+        "company": "Phunware, Inc. ",
+        "title": "Software Engineer",
+        "years": "Jun 2014 - Dec 2016",
+        "description": ""
+      },
+      {
+        "company": "Phunware, Inc. (Simplikate)",
+        "title": "ASP C# .NET DEVELOPER",
+        "years": "Oct 2013 - Jun 2014",
+        "description": ""
+      }
+    ],
+    "skills": [
+      {
+        "name": "Software Engineering",
+        "level": "90%"
+      },
+      {
+        "name": "Software Development Life Cycle",
+        "level": "95%"
+      },
+      {
+        "name": "Microsoft Azure",
+        "level": "70%"
+      },
+      {
+        "name": "Git",
+        "level": "60%"
+      },
+      {
+        "name": "Angular",
+        "level": "40%"
+      },
+      {
+        "name": "ReactJs",
+        "level": "70%"
+      },
+      {
+        "name": "C#",
+        "level": "80%"
+      },
+      {
+        "name": "SQL",
+        "level": "60%"
+      }
+    ]
+  },
+  "portfolio": {
+    "projects": [
+      {
+        "title": "Educational Tool",
+        "category": "Educational tool for Schools in Latin and Central America",
+        "image": "aula0.jpg",
+        "url": "https://webaula0app.com/"
+      }
+    ]
+  },
+  "testimonials": {
+    "testimonials": [
+      {
+        "text": "Enio was a total workhorse during our time together at Phunware. In addition to having a solid engineering skillset, I don't think there was a single thing he was asked to do that he wasn't willing to tackle - managing and mentoring junior team members, architecting major features, transitioning between back end / front end, and jumping in to lend a hand on native mobile development when needed. His ability to wear many hats and context switch is extremely valuable in a startup environment and will keep him in high demand. I would happily work with Enio again.",
+        "user": "Paul Clark"
+      },
+      {
+        "text": "Enio is a very detail-oriented, and extremely fast learner perfect for highly dynamic environments needing fast-paced adaptation. Starting as a regular C# Engineer and working his way up to leading the whole .Net development Team, even crossing over to Objective-C with iOS, delivering every time, on time, he has shown leadership and incredible skills.",
+        "user": "Erik Jordan"
+      }
+    ]
+  }
+}
