@@ -1,8 +1,78 @@
 import React, { Component } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 class Contact extends Component {
-  render() {
 
+   constructor(propos){
+      super(propos);
+      this.state = {
+         message:{
+            contactName: '',
+            contactEmail: '',
+            contactSubject: '',
+            contactMessage: '',
+         },
+         allowSend:false,
+         reCaptchaToken:null,
+      }
+      this.onChangeRecapcha = this.onChangeRecapcha.bind(this);
+      this.onSendMessage = this.onSendMessage.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+   }
+   handleChange(event){
+      const name = event.target.name;
+      const value = event.target.value;
+      this.setState({
+         //...this.state,
+         message:{
+            ...this.state.message,
+            [name]:value
+         }
+      })
+      console.log(name, value);
+   }
+
+   onChangeRecapcha(token){
+      //console.log('Captcha value:', token);
+      var allowSend = false;
+      allowSend = token ? true : false;
+      this.setState(
+         {
+            ...this.state, 
+            allowSend:allowSend,
+            reCaptchaToken:token,
+         })
+   }
+
+   onSendMessage(event){
+      var data = {
+         token: this.state.reCaptchaToken,
+         message: this.state.message,
+      }
+
+      fetch(
+         "https://prod-25.eastus2.logic.azure.com:443/workflows/1f979adcd0db49cba4383b4dea5f1499/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=GFIu9fOnnQPX4u6pWydw7MI8BiKffRZgBL49CeDlB7s",
+         {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+               'Content-Type': 'application/json'
+             },
+            body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(data => {
+         console.log(data);
+      })
+      .catch((error) => {
+         console.error('Error:', error);
+      });
+
+      event.preventDefault();
+   }
+
+  render() {
+   //const reRef = useRef();
     if(this.props.data){
       var name = this.props.data.name;
       var street = this.props.data.address.street;
@@ -16,51 +86,81 @@ class Contact extends Component {
 
     return (
       <section id="contact">
-
          <div className="row section-head">
-
             <div className="two columns header-col">
-
                <h1><span>Get In Touch.</span></h1>
-
             </div>
-
             <div className="ten columns">
-
                   <p className="lead">{message}</p>
-
             </div>
-
          </div>
 
          <div className="row">
             <div className="eight columns">
-
-               <form action="" method="post" id="contactForm" name="contactForm">
+               <form id="contactForm" name="contactForm">
 					<fieldset>
 
                   <div>
 						   <label htmlFor="contactName">Name <span className="required">*</span></label>
-						   <input type="text" defaultValue="" size="35" id="contactName" name="contactName" onChange={this.handleChange}/>
+						   <input 
+                        type="text" 
+                        size="35" 
+                        id="contactName" 
+                        name="contactName" 
+                        onChange={this.handleChange}
+                        value={this.state.message.contactName}
+                        />
                   </div>
 
                   <div>
 						   <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-						   <input type="text" defaultValue="" size="35" id="contactEmail" name="contactEmail" onChange={this.handleChange}/>
+						   <input 
+                        type="text" 
+                        size="35" 
+                        id="contactEmail" 
+                        name="contactEmail" 
+                        onChange={this.handleChange}
+                        value={this.state.message.contactEmail}
+                        />
                   </div>
 
                   <div>
 						   <label htmlFor="contactSubject">Subject</label>
-						   <input type="text" defaultValue="" size="35" id="contactSubject" name="contactSubject" onChange={this.handleChange}/>
+						   <input 
+                        type="text" 
+                        size="35" 
+                        id="contactSubject" 
+                        name="contactSubject" 
+                        onChange={this.handleChange}
+                        value={this.state.message.contactSubject}
+                        />
                   </div>
 
                   <div>
                      <label htmlFor="contactMessage">Message <span className="required">*</span></label>
-                     <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
+                     <textarea 
+                        cols="50" 
+                        rows="15" 
+                        id="contactMessage" 
+                        name="contactMessage"
+                        onChange={this.handleChange}
+                        value={this.state.message.contactMessage}
+                        ></textarea>
                   </div>
-
                   <div>
-                     <button className="submit">Submit</button>
+                     <ReCAPTCHA 
+                        sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY} 
+                        ref={(el) => {this.messageCaptcha = el;}} 
+                        onChange={this.onChangeRecapcha}
+                        />
+                  </div>
+                  <div style={{paddingTop:'25px'}}>
+                     {this.state.allowSend ? 
+                        <button 
+                           className="submit" 
+                           onClick={this.onSendMessage}
+                           >Submit</button>
+                        : null }
                      <span id="image-loader">
                         <img alt="" src="images/loader.gif" />
                      </span>
@@ -78,7 +178,7 @@ class Contact extends Component {
             <aside className="four columns footer-widgets">
                <div className="widget widget_contact">
 
-					   <h4>Address and Phone</h4>
+					   <h4>Contact Info</h4>
 					   <p className="address">
 						   {name}<br />
 						   {street} <br />
@@ -92,16 +192,14 @@ class Contact extends Component {
                   <ul id="twitter">
                      <li>
                         <span>
-                        This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                        Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum
+                        Tweet1
                         <a href="#">http://t.co/CGIrdxIlI3</a>
                         </span>
                         <b><a href="#">2 Days Ago</a></b>
                      </li>
                      <li>
                         <span>
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                        eaque ipsa quae ab illo inventore veritatis et quasi
+                        Tweet2
                         <a href="#">http://t.co/CGIrdxIlI3</a>
                         </span>
                         <b><a href="#">3 Days Ago</a></b>

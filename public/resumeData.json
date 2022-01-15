@@ -5,14 +5,14 @@
     "description": "Diligent Software Development Director with expertise in managing high performing teams and long-term releases using the Agile framework processes. Skilled in product development, release planning, change management and product strategy.",
     "image": "profilepic.jpg",
     "bio": "One thing I cannot live without is coffee, I have a golden retriever, his name is Byte, I love elephants. I do crossfit, I am passionate to computer science, I like travel, and eat weird stuff.",
-    "contactmessage": "Here is where you should write your message to readers to have them get in contact with you.",
+    "contactmessage": "Reach out for inquiries.",
     "email": "enio.maiale@gmail.com",
     "phone": "305-308-0503",
     "address": {
-      "street": "18440 NE 20TH CT",
+      "street": "",
       "city": "Miami",
       "state": "FL",
-      "zip": "33179"
+      "zip": ""
     },
     "website": "http://www.enio.io",
     "resumedownload": "http://www.enio.io/resume/EnioMaialeResume2021.pdf",
@@ -45,7 +45,8 @@
     ]
   },
   "resume": {
-    "skillmessage": "I am always curious about new technologies, but here you can find some of my major skills:",
+    "leadershipskillmessage": "Expert at managing and inspiring Software Engineering Teams",
+    "skillmessage": "I am always curious about new technologies, here you can find some of my major skills:",
     "education": [
       {
         "school": "Nueva Esparta University (Venezuela)",
@@ -86,9 +87,39 @@
         "description": ""
       }
     ],
+    "leaderSkills": [
+      {
+        "name": "Team Builder",
+        "level": "60%"
+      },
+      {
+        "name": "Delegation",
+        "level": "80%"
+      },
+      {
+        "name": "Autonomy",
+        "level": "70%"
+      },
+      {
+        "name": "Motivation",
+        "level": "70%"
+      },
+      {
+        "name": "Coaching",
+        "level": "95%"
+      },
+      {
+        "name": "Problem Solving",
+        "level": "98%"
+      },
+      {
+        "name": "Integrity",
+        "level": "98%"
+      }
+    ],
     "skills": [
       {
-        "name": "Software Engineering",
+        "name": "Software Engineering & Software Architecture",
         "level": "90%"
       },
       {
@@ -124,10 +155,22 @@
   "portfolio": {
     "projects": [
       {
+        "title": "Miami HEAT Mobile App",
+        "category": "The official app of the Miami HEAT",
+        "image": "miami-heat-app.png",
+        "url": "https://www.nba.com/heat/app/"
+      },
+      {
         "title": "Educational Tool",
         "category": "Educational tool for Schools in Latin and Central America",
         "image": "aula0.jpg",
         "url": "https://webaula0app.com/"
+      },
+      {
+        "title": "Phunware Residential Solution",
+        "category": "Premium Residential solution with cutting-edge technology",
+        "image": "phunware-res.png",
+        "url": "https://www.phunware.com/solutions/residential/"
       }
     ]
   },
