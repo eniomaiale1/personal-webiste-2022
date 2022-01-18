@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import validator from 'validator';
 
 class Contact extends Component {
 
@@ -14,11 +19,66 @@ class Contact extends Component {
          },
          allowSend:false,
          reCaptchaToken:null,
+         snackBar:{
+            open: false,
+            message: '',
+            type: 'success',
+         },
       }
       this.onChangeRecapcha = this.onChangeRecapcha.bind(this);
       this.onSendMessage = this.onSendMessage.bind(this);
       this.handleChange = this.handleChange.bind(this);
+      this.handleClick = this.handleClick.bind(this);
+      this.handleClose = this.handleClose.bind(this);
+      //this.validateForm = this.validateForm.bind(this);
    }
+
+   handleClick(){
+      this.setState({
+         snackBar:{
+            ...this.state.snackBar,
+            open: true,
+         }
+      });
+   }
+   
+   handleClose(){
+      this.setState({
+         snackBar:{
+            ...this.state.snackBar,
+            open: false,
+         }
+      });
+   }
+
+   showSnackBar(message, type){
+      this.setState({
+         snackBar:{
+            open:true,
+            message:message,
+            type:type,
+         }
+      });
+   }
+
+   validateForm(){
+      var message = this.state.message;
+      if(!message.contactEmail){
+         this.showSnackBar('The email address cannot be empty.','warning');
+         return false;
+      }else if(!message.contactName){
+         this.showSnackBar('The name cannot be empty','warning');
+         return false;
+      }else if(!message.contactMessage){
+         this.showSnackBar('The message cannot be empty','warning');
+         return false;
+      } else if(!validator.isEmail(message.contactEmail)){
+         this.showSnackBar('The email address is not valid.','warning');
+         return false;
+      }
+      return true;
+   }
+
    handleChange(event){
       const name = event.target.name;
       const value = event.target.value;
@@ -44,7 +104,25 @@ class Contact extends Component {
          })
    }
 
+   resetMessageState(){
+      this.setState({
+         ...this.state,
+         message: {
+            contactName: '',
+            contactEmail: '',
+            contactSubject: '',
+            contactMessage: '',
+         }
+      })
+   }
+
    onSendMessage(event){
+
+      if(!this.validateForm()){
+         event.preventDefault();
+         return;
+      }
+
       var data = {
          token: this.state.reCaptchaToken,
          message: this.state.message,
@@ -63,9 +141,12 @@ class Contact extends Component {
       .then(response => response.json())
       .then(data => {
          console.log(data);
+         this.showSnackBar(data.message,'success');
+         this.resetMessageState();
       })
       .catch((error) => {
          console.error('Error:', error);
+         this.showSnackBar(data.message,'error');
       });
 
       event.preventDefault();
@@ -167,6 +248,20 @@ class Contact extends Component {
                   </div>
 					</fieldset>
 				   </form>
+               
+               <Stack spacing={2} sx={{ width: '100%' }}>
+                  <Snackbar 
+                     open={this.state.snackBar.open} 
+                     autoHideDuration={6000} 
+                     onClose={this.handleClose}>
+                  <Alert 
+                     onClose={this.handleClose} 
+                     severity={this.state.snackBar.type} 
+                     sx={{ width: '100%' }}>
+                     {this.state.snackBar.message}
+                  </Alert>
+                  </Snackbar>
+               </Stack>
 
            <div id="message-warning"> Error boy</div>
 				   <div id="message-success">
