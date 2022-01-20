@@ -68,5 +68,6 @@ stages:
               ScriptType: 'Inline Script'
               InlineScript: |
                 npm cache clean
+                npm install --cache /tmp/empty-cache
                 npm install
                 npm run build --if-present
